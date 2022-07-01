@@ -49,15 +49,18 @@ body{
     color: white;
   }
 
-
+#con1 {
+    margin-bottom: 10%;
+}
 
 #filter {
     min-width: 1200px;
     min-height: 80px;
-    margin-bottom: 50%;
+    margin-bottom: 30%;
     background-color: white;
     border: 2px solid blue;
     border-radius: 3%;
+    
     box-shadow: black 5px 3px 3px 3px;
     
 }
