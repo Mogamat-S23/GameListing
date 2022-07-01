@@ -6,6 +6,7 @@ let games = JSON.parse(localStorage.getItem('game'))
 function theGame() {
     document.getElementById('display').innerHTML ='';
     games.forEach((details,index) => {
+        // console.log(details);
         document.getElementById('display').innerHTML += 
         `
         <tr>
@@ -16,12 +17,14 @@ function theGame() {
             <td>${details.type}</td>
 
             
+
             <td> 
             <a class="btn" data-bs-toggle="modal" data-bs-target="#exampleModal${index}">
-            <i class="fa-solid fa-file-pen" onclick="edit(${details.id})"></i>    
+            <i class="fa-solid fa-file-pen"></i>    
             
             </a>
             <i class="fa-solid fa-trash-can" onclick="remove(${index})"></i>
+            </td>   
         </tr>
 
         <!-- Modal -->
@@ -33,34 +36,28 @@ function theGame() {
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                    <h6>Type of Id</h6>
-                    <input value="${details.id}">
-                    <h6>Type of URL</h6>
-                    <input value="${details.Genre}">
+                    <h6>Type of Genre</h6>
+                    <input id="Genre${index}" value="${details.Genre}">
                     <h6>Amount of Name</h6>
                     <input value="${details.icon2}">
-                    <h6>Amount of Price</h6>
-                    <input value="${details.icon}">
-                    <h6> Type</h6>
-                    <input value="${details.URL}">
-                    <h6> Type</h6>
-                    <input value="${details.name}">
-                    <h6> Type</h6>
-                    <input value="${details.platform}">
-                    <h6> Type</h6>
-                    <input value="${details.type}">
+                    <h6> Type Name</h6>
+                    <input id="name${index}" value="${details.name}">
+                    <h6> Type Platform</h6>
+                    <input id="platform${index}" value="${details.platform}">
+                    <h6> Add Type</h6>
+                    <input id="type${index}" value="${details.type}">
                     <h6>Enter price</h6>
-                    <input value="${details.price}">
+                    <input id="price${index}" value="${details.price}">
                     <h6>Enter description</h6>
                     <input value="${details.desc}">
-                    <h6>Enter image</h6>
-                    <input value="${details.image}">
+
+                    
 
 
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary" onclick="edit(${index})">Save changes</button>
+                        <button type="button" class="btn btn-primary" onclick="edit(${index})" data-bs-dismiss="modal">Save changes</button>
                     </div>
                     </div>
                 </div>
@@ -72,12 +69,53 @@ theGame()
 
 ///edit button 
 
-function edit(){
+// function edit(id){
+    // console.log("Im being clicked");
+    // let eid = document.getElementById(`id${id}`).value
+    // let eGenre = document.getElementById(`Genre${id}`).value
+    // let ename = document.getElementById(`name${id}`).value
+    // let eplatform = document.getElementById(`platform${id}`).value
+    // let etype = document.getElementById(`type${id}`).value
+    // let eprice = document.getElementById(`price${id}`).value
+    // let edesc  = document.getElementById(`desc${id}`).value
+
+    // console.log(eid);
+    // games[id].id=parseInt(eid);
+    // games[id].Genre=eGenre;
+    // games[id].name=ename;
+    // games[id].platform=eplatform;
+    // games[id].type=etype;
+    // games[id].price=parseInt(eprice);
+    // games[id].desc=parseInt(edesc);
+
     // const newProp = prompt('Change Game Name')
     // const task = games.find((game) => game.id === id);
     // task.name = newProp
-    localStorage.setItem('game',JSON.stringify(games));
+    // localStorage.setItem('game',JSON.stringify(games));
+    // console.log(games[id]);
     // window.location.reload();
+//     theGame();
+// };
+function edit(id) {
+    // UPDATE
+    console.log("Im being clicked");
+    // variables for edited values
+    let eGenre = document.getElementById(`Genre${id}`).value
+    let ename = document.getElementById(`name${id}`).value
+    let eplatform = document.getElementById(`platform${id}`).value
+    let etype = document.getElementById(`type${id}`).value
+    let eprice = document.getElementById(`price${id}`).value
+    // let edesc  = document.getElementById(`desc${id}`).value
+    // passing edited values into array
+    games[id].Genre=eGenre;
+    games[id].name=ename;
+    games[id].platform=eplatform;
+    games[id].type=etype;
+    games[id].price=parseInt(eprice);
+    // games[id].desc=edesc;
+    //   Save it to localStorage
+      localStorage.setItem('game', JSON.stringify(games));
+    // Calling Function
     theGame();
 };
 
