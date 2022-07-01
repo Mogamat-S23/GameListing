@@ -10,9 +10,9 @@ function theGame() {
         <tr>
             <td>${details.id}</td>
             <td><img src="${details.URL}" width="100px" height="100px"></td>
-            <td>${details.name}</td>
-            <td>${details.price}</td>
-            <td>${details.type}</td>
+            <td><input enabled value="${details.name}"</td>
+            <td><input enabled value="${details.price}"</td>
+            <td><input enabled value="${details.type}"</td>
 
             
             <td> <i class="fa-solid fa-file-pen" onclick="edit(${details.id})"></i>    <i class="fa-solid fa-trash-can"></i></td>
@@ -22,22 +22,27 @@ function theGame() {
 }
 theGame()
 
-
-//edit button
-
-// function editItem(id) {
-//     let item =item.find (item => item.id ===id)
-//     item.title = 'new'
-// }
-
-// editItem(${item.id})
-
-
+///edit button 
 
 function edit(id){
-    const newProp = prompt('What would u change')
+    const newProp = prompt('Change Game Name')
     const task = games.find((game) => game.id === id);
-    games.type = newProp
+    task.name = newProp
     localStorage.setItem('game',JSON.stringify(games));
+    window.location.reload();
+    theGame();
+};
+
+///delet button
+
+function remove(id) {
+    if (id > -1) {
+      games.splice(id, 1);
+      // Apply the change
+      localStorage.setItem('game', JSON.stringify(games));
+    }
+    for(i=0;i<games.length;i++){
+        games[i].id = i+1;
+    }
     theGame();
 };

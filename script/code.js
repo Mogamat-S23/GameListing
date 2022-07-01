@@ -1,5 +1,6 @@
-// let games = JSON.parse (localStorage.getItem('game')) ?JSON.parse(localStorage.getItem('game')) :
-localStorage.setItem('game',JSON.stringify(games = [
+let games = JSON.parse(localStorage.getItem('game')) ?
+JSON.parse(localStorage.getItem('game')) :
+localStorage.setItem('game',JSON.stringify([
     {
         id: 1,
         Genre :' Sports',
@@ -319,6 +320,9 @@ getGames(games);
 //SORT BY Genre
 
 function sortGenre(genre) {
+  if (genre.target.value === 'All') {
+    return getGames (games)
+  }
   let genreArr = games.filter(Y => {
    return Y.Genre == genre.target.value
   }) 
@@ -332,6 +336,9 @@ document.getElementById('genre').addEventListener('change',sortGenre);
 //Sort BY PRICE
 
 function sortPrice(price) {
+  if (price.target.value <= '1000') {
+    return getGames (games)
+  }
   let PriceArr = games.filter(Y => {
    return Y.price == price.target.value
   }) 
@@ -343,6 +350,9 @@ document.getElementById('price').addEventListener('change',sortPrice);
 //SORT BY TYPE
 
 function sortPlatform(platform) {
+  if (platform.target.value === 'All') {
+    return getGames (games)
+  }
   let PlatformArr = games.filter(Y => {
    return Y.platform == platform.target.value
   }) 
@@ -353,6 +363,9 @@ document.getElementById('platform').addEventListener('change',sortPlatform);
 //SORT BY platform
 
 function sortType(type) {
+  if (type.target.value === 'All') {
+    return getGames (games)
+  }
   let typeArr = games.filter(Y => {
    return Y.type == type.target.value
   }) 

@@ -24,7 +24,7 @@ table{
     border: 2px solid blue;
     width: 120px;
     height: 40px;
-    margin-top: 15%;
+    margin-top: -15%;
     border-radius: 10%;
 
   }
@@ -33,6 +33,30 @@ table{
     background-color: royalblue;
     color: white;
   } 
+
+  #btnSubmit2 {
+    background-color: white; 
+    color: black; 
+    border: 2px solid blue;
+    width: 120px;
+    height: 40px;
+    margin-top: 15%;
+    border-radius: 10%;
+
+  }
+  
+#btnSubmit2:hover {
+    background-color: royalblue;
+    color:black;
+  } 
+
+  a{
+    color: black; 
+  }
+
+  a:hover{
+    color: white;
+  }
 
   #nav {
     background-image: url(../Images/de8mqjp-4d94007a-d97f-454b-a188-25d496100036.png);
